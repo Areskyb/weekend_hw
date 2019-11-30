@@ -1,17 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+
+    <fun-form v-model="to_translate"></fun-form>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {eventBus} from './main.js'
+import FunForm from './components/FunForm.vue'
 
 export default {
   name: 'app',
+  data(){
+    return{
+      to_translate:"",
+      translated:'',
+      apiResponse:[]
+    }
+  },
+  mounted(){
+      eventBus.$on('to-translate', text => {
+      this.to_translate = text
+      this.transform(this.to_translate)
+      // this.translate(this.to_translate)
+    })
+
+  },
+  methods:{
+    translate(){
+      fetch(`https://api.funtranslations.com/translate/yoda.json?text=${this.to_translate}`)
+        .then(result => result.json())
+        .then(data => this.apiResponse = data )
+    },
+    transform(text){
+      this.to_translate = text.replace(/ /g,"%20")
+    }
+  },
   components: {
-    HelloWorld
+    "fun-form": FunForm
   }
 }
 </script>
