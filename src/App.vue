@@ -20,14 +20,19 @@ export default {
   mounted(){
       eventBus.$on('to-translate', text => {
       this.to_translate = text
-      this.transform(this.to_translate)
-      // this.translate(this.to_translate)
+      this.translate()
     })
 
   },
   methods:{
     translate(){
-      fetch(`https://api.funtranslations.com/translate/yoda.json?text=${this.to_translate}`)
+      fetch("https://numbersapi.p.rapidapi.com/1730/math?fragment=true&json=true", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "numbersapi.p.rapidapi.com",
+		"x-rapidapi-key": "7c276f3231msha6b607e9767c23ep1c3116jsn3c40126e8814"
+	}
+})
         .then(result => result.json())
         .then(data => this.apiResponse = data )
     },
