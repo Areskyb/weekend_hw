@@ -1,9 +1,12 @@
 <template lang="html">
-  <form class="fun-form" v-on:submit.prevent='handleForm'>
-    <input type="number" name="" value="" v-model='text'>
-    <input type="submit" name="" value="search">
-  </form>
+  <div class="">
+    <h3>Get info from you favourite number</h3>  
+    <form class="fun-form" v-on:submit.prevent='handleForm'>
+      <input type="number" name="" value="" v-model='text'>
+      <input type="submit" name="" value="search">
+    </form>
 
+</div>
 </template>
 
 <script>
