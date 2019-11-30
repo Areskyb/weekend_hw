@@ -1,12 +1,15 @@
 <template>
-
+  <div class="">
     <fun-form v-model="to_translate"></fun-form>
+    <result :result="this.apiResponse"></result>
+  </div>
 
 </template>
 
 <script>
 import {eventBus} from './main.js'
 import FunForm from './components/FunForm.vue'
+import Result from './components/Result.vue'
 
 export default {
   name: 'app',
@@ -26,7 +29,7 @@ export default {
   },
   methods:{
     translate(){
-      fetch("https://numbersapi.p.rapidapi.com/1730/math?fragment=true&json=true", {
+      fetch(`https://numbersapi.p.rapidapi.com/${this.to_translate}/math?fragment=true&json=true`, {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "numbersapi.p.rapidapi.com",
@@ -41,7 +44,8 @@ export default {
     }
   },
   components: {
-    "fun-form": FunForm
+    "fun-form": FunForm,
+    "result": Result
   }
 }
 </script>
