@@ -1,7 +1,7 @@
 <template lang="html">
   <form class="fun-form" v-on:submit.prevent='handleForm'>
-    <textarea name="name" rows="8" cols="80" v-model="text"></textarea>
-    <input type="submit" name="" value="translate">
+    <input type="number" name="" value="" v-model='text'>
+    <input type="submit" name="" value="search">
   </form>
 
 </template>
