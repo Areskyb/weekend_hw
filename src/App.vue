@@ -62,11 +62,12 @@ export default {
 
 <style>
 h1{
-  text-align: center
+  text-align: center;
+  color: #00B282
 }
 .app{
-
-}
+  margin-top: 10%;
+  }
 
 .forms{
   display: flex;
