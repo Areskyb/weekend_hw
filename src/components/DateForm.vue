@@ -37,4 +37,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
+
+input{
+  font-family: 'Permanent Marker', cursive;
+  background-color: #69D1C5;
+  padding: 12px;
+  border-radius: 4px;
+  color: #00B282;
+
+}
 </style>
