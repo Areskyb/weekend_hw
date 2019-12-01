@@ -1,13 +1,18 @@
 <template>
-  <div class="">
+  <div class="app">
+    <h1>Ask for info</h1>
+    <div class="forms">
     <fun-form v-model="to_translate"></fun-form>
-    <result :result="this.apiResponse"></result>
+    <date-form></date-form>
+  </div>
+    <result class="result" :result="this.apiResponse"></result>
   </div>
 
 </template>
 
 <script>
 import {eventBus} from './main.js'
+import DateForm from './components/DateForm.vue'
 import FunForm from './components/FunForm.vue'
 import Result from './components/Result.vue'
 
@@ -24,6 +29,10 @@ export default {
       eventBus.$on('to-translate', text => {
       this.to_translate = text
       this.translate()
+    })
+
+    eventBus.$on('date-form', data => {
+        this.apiResponse = data
     })
 
   },
@@ -45,18 +54,25 @@ export default {
   },
   components: {
     "fun-form": FunForm,
-    "result": Result
+    "result": Result,
+    "date-form": DateForm
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+h1{
+  text-align: center
+}
+.app{
+
+}
+
+.forms{
+  display: flex;
+  justify-content: space-around;
+}
+.result{
+  text-align: center
 }
 </style>

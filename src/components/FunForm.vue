@@ -1,8 +1,7 @@
 <template lang="html">
   <div class="">
-    <h3>Get info from you favourite number</h3>  
     <form class="fun-form" v-on:submit.prevent='handleForm'>
-      <input type="number" name="" value="" v-model='text'>
+      <input class="text-input" type="number" name="" value="" v-model='text' required placeholder="insert your favourite number">
       <input type="submit" name="" value="search">
     </form>
 
@@ -29,4 +28,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.text-input{
+  width: 200px
+}
 </style>

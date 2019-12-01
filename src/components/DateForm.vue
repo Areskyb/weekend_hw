@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import {eventBus} from '../main.js'
 export default {
   name: 'date-form',
   data(){
@@ -14,7 +15,6 @@ export default {
       apiResponse:"",
     }
   },
-
   methods:{
     handleForm(){
       let today = new Date
@@ -26,6 +26,9 @@ export default {
 	}
 }).then(response => response.json())
       .then(data => this.apiResponse = data)
+
+      eventBus.$emit('date-form', this.apiResponse)
+
 
     }
   },
